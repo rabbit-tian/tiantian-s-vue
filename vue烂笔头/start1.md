@@ -3,7 +3,12 @@
     - npm i -g vue-cli
 2. 创建一个基于webpack的新项目
     - vue init webpack smartisan
-3. 安装依赖   npm init
+    
+3. 进入文件夹后 ，安装依赖   npm init
 4. 安装 vuex  npm i vuex -save
 
+
+### 需要安装的依赖
+1. axios
+2. less less-loader
 

@@ -6,9 +6,34 @@
     
 3. 进入文件夹后 ，安装依赖   npm init
 4. 安装 vuex  npm i vuex -save
+5.  npm i less less-loader --save-dev
 
 
-### 需要安装的依赖
-1. axios
-2. less less-loader
+### 路由
+1. 二级路由永远不加 / 
+2. 具体代码展示
+    ```
+    export default new Router({
+      routes: [
+        { path: "", component: Home }, // 默认展示的路径
+        { path: "/home", component: Home },
+        {
+          path: "/list",
+          component: List,
+          children: [
+            { path: "", component: Profile }, // 默认展示的路径
+            {
+              path: "profile",
+              component: Profile
+            },
+            {
+              path: "about",
+              component: About
+            }
+          ]
+        },
+        { path: "*", redirect: "/home" }
+      ]
+    });
+    ```
 

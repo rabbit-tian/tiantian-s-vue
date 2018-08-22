@@ -12,6 +12,7 @@
 ### 路由
 1. 二级路由永远不加 / 
 2. 具体代码展示
+
     ```
     export default new Router({
       routes: [
@@ -36,4 +37,24 @@
       ]
     });
     ```
+
+### axios的使用
+
+```
+    // 接口文件
+    import axios from 'axios';
+    // axios.defaults.baseURL = 'http://localhost:3000' // 增加默认请求路径
+    
+    // axios 数据拦截处理
+    axios.interceptors.response.use((res) => {
+      return res.data
+    })
+    
+    // 获取活动列表数据
+    export let getData = (url,params) => {
+      return axios.post(url, params);
+      // return axios.get("https://www.easy-mock.com/mock/5b7660bb76a41b2c09dbf28b/pcActiveList/pcActiveList#!method=get");
+    };
+```
+
 

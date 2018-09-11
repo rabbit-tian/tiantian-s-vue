@@ -36,3 +36,29 @@
   }
 ```
 
+#### iview 中日期选择器的使用
+1. 配置项
+    - editable： 文本框是否可以输入，只在没有使用 slot 时有效
+    
+
+```
+<DatePicker :editable="false" size="large" type="date" placeholder="开始时间" v-model="date" :options="optDate"></DatePicker>
+<DatePicker :editable="false" size="large" type="date" placeholder="结束时间" v-model="endDate" :options="optDate2"></DatePicker>
+
+ data() {
+    return {
+      // 设置不可用日期
+      optDate: {
+        disabledDate (date) {
+            return date && date.valueOf() < Date.now() - 86400000*2;
+        }
+      },
+      optDate2: {
+        disabledDate (date) {
+          return date && date.valueOf() < Date.now() - 86400000;
+        }
+      },
+    }
+ }
+```
+

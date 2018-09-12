@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+</head>
+<body>
+  <div id="app">
+    {{a}}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    /*
+      1. 当一个 Vue 实例被创建时，它向 Vue 的响应式系统中加入了其 data 对象中能找到的所有的属性。当这些属性的值发生改变时，视图将会产生“响应”，即匹配更新为新的值
+
+      2. 这里唯一的例外是使用 Object.freeze()，这会阻止修改现有的属性，也意味着响应系统无法再追踪变化。
+
+      var obj = {
+        foo: 'bar'
+      }
+
+      Object.freeze(obj)
+
+      new Vue({
+        el: '#app',
+        data: obj
+      })
+
+
+      3. 除了数据属性，Vue 实例还暴露了一些有用的实例属性与方法。它们都有前缀 $，以便与用户定义的属性区分开来
+    
+    */
+
+
+
+    let data = {a:1}
+    let vm = new Vue ({
+      el: "#app",
+      data: data,
+    })
+
+    vm.$data === data // => true
+    vm.$el === document.getElementById('example') // => true
+    
+    // $watch 是一个实例方法
+      vm.$watch('a', function (newValue, oldValue) {
+        // 这个回调将在 `vm.a` 改变后调用
+        console.log(1111);
+      })
+  
+  </script>
+</body>
+</html>

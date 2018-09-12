@@ -62,3 +62,44 @@
  }
 ```
 
+#### 自定义手机号码验证
+1. 参数说明
+    - prop="phone": 对应表单域 model 里的字段
+    - v-model="formValidate.phone": 验证规则
+
+```
+<FormItem label="手机号码" prop="phone">
+  <Input v-model="formValidate.phone" placeholder="请输入手机号码" style="width:400px"></Input>
+</FormItem>
+
+data () {
+    const validatePhone = (rule, value, callback) => {
+        if (!value) {
+            return callback(new Error('手机号不能为空'));
+        } else if (!/^1[34578]\d{9}$/.test(value)) {
+            callback('手机号格式不正确');
+        } else {
+            callback();
+        }   
+    };
+
+
+    return {
+        formValidate: {
+            phone: "", // 手机号码
+        },
+        ruleValidate:{
+            // 手机号码
+            phone:[
+                {
+                    validator:validatePhone,
+                    trigger:'blur',
+                    required: true,
+                    message: "请输入正确的手机号码",
+                }
+            ],
+        }
+    }
+}
+```
+

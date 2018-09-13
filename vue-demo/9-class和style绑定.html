@@ -23,6 +23,14 @@
     <div class="static" :class="{'active':isActive,'text-dabger': hasError}">我添加了class标签</div>
 
     <h3 :class="classObject">我是class对象</h3>
+
+    <h2 :style="{color: activeColor,fontSize: fontSize}">我是标题</h2>
+    <h1 :style="styleObject">我是标题</h1>
+
+    <p :class="[activeClass,errorClass]">我是数组语法</p>
+    <p :class="[isActive ? activeClass : '', errorClass ]">我是数组语法表达式</p>
+    <!-- <div v-bind:class="[isActive ? activeClass : '', errorClass]"></div> -->
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -36,7 +44,19 @@
         classObject: {
           'isAdd1': true,
           'isAdd2': true,
-        }
+        },
+
+        activeColor: "red",
+        fontSize: '30px',
+
+        styleObject: {
+          activeColor2: "green",
+          fontSize2: '30px',
+        },
+
+        // 数组语法
+        activeClass: 'active',
+        errorClass: 'text-danger',
       }
     })
   

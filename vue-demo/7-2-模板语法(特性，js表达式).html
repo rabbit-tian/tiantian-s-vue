@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #speciall{
+      color:aqua;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h6>计算加1：{{number + 1}}</h6>
+    <h5>判断：{{ok ? "YES" : "NO"}}</h5>
+    <h4>字符串方法：{{message.split('').reverse().join('')}}</h4>
+    <h3 v-bind:id='"list-" + id'>属性拼接</h3>
+    
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    /*
+     1. 使用js表达式
+     2. 注意：限制就是，每个绑定都只能包含单个表达式，以下不生效
+       (1) 这是语句，不是表达式
+        {{ var a = 1 }}
+
+       (2) 流控制也不会生效，请使用三元表达式 
+        {{ if (ok) { return message } }}
+
+      3. 模板表达式都被放在沙盒中，只能访问全局变量的一个白名单，如 Math 和 Date 。你不应该在模板表达式中试图访问用户定义的全局变量。
+
+    */ 
+
+    let app = new Vue ({
+      el: "#app",
+      data: {
+        number: 1,
+        ok: true,
+        message: "what's wrong with you?",
+        id: "after",
+      }
+    })
+  
+  </script>
+</body>
+</html>

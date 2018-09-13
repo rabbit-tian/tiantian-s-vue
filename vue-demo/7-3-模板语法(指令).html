@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #speciall{
+      color:aqua;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h6 v-if="seen">我要消失啦</h6>
+
+    <a v-bind:href="url">百度</a> </br>
+
+    <!-- 事件 -->
+    <button v-on:click="doSomething">点我</button>
+
+    <!-- 修饰符 -->
+    <form v-on:click.prevent="doSomething2">阻止默认事件</form>
+
+    <!-- 缩写 -->
+    <a :href="url">百度</a>
+    <button @click="doSomething">点我</button>
+    <form @click.prevent="doSomething2">阻止默认事件</form>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+   
+    let app = new Vue ({
+      el: "#app",
+      data: {
+        seen: true, // 消失
+        url: "http://www.baidu.com",
+      },
+      methods: {
+        doSomething(){
+          this.seen = !this.seen;
+        },
+        doSomething2 () {
+          alert(1)
+        }
+      }
+    })
+  
+  </script>
+</body>
+</html>

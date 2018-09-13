@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+</head>
+<body>
+  <div id="app">
+    <!-- 数组v-for -->
+    <ul class="list">
+      <li v-for="(item,index) in items" :key="index">
+        {{(index+1) + ':' +item.name}}
+      </li>
+    </ul>
+
+    <!-- 对象 v-for -->
+    <ul class="list">
+      <li v-for="(value,key,index) in object" :key="index">
+        {{index + '-' + key + ":" +value}}
+      </li>
+    </ul>
+
+    <span v-for="n in 10">{{n}}</span>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    let app = new Vue ({
+      el: "#app",
+      data: {
+        items: [
+          {name: "tian"},
+          {name: "yang"},
+        ],
+        object: {
+          name: 'tian',
+          age: 18,
+          sex: 'girl',
+        }
+      }
+    })
+  
+  </script>
+</body>
+</html>

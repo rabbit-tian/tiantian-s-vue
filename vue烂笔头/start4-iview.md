@@ -103,3 +103,131 @@ data () {
 }
 ```
 
+
+#### 全局提示框的使用
+
+```
+提示类型 #
+不同的提示状态：成功、警告、错误。
+
+<template>
+    <Button @click="success">Display success prompt</Button>
+    <Button @click="warning">Display warning prompt</Button>
+    <Button @click="error">Display error prompt</Button>
+</template>
+<script>
+    export default {
+        methods: {
+            success () {
+                this.$Message.success('This is a success tip');
+            },
+            warning () {
+                this.$Message.warning('This is a warning tip');
+            },
+            error () {
+                this.$Message.error('This is an error tip');
+            }
+        }
+    }
+</script>
+```
+
+#### Modal 对话框的使用
+1. 详细，成功，警告，失败的 提示框
+
+```
+<template>
+    <Button @click="instance('info')">Info</Button>
+    <Button @click="instance('success')">Success</Button>
+    <Button @click="instance('warning')">Warning</Button>
+    <Button @click="instance('error')">Error</Button>
+</template>
+<script>
+    export default {
+        methods: {
+            instance (type) {
+                const title = 'Title';
+                const content = '<p>Content of dialog</p><p>Content of dialog</p>';
+                switch (type) {
+                    case 'info':
+                        this.$Modal.info({
+                            title: title,
+                            content: content
+                        });
+                        break;
+                    case 'success':
+                        this.$Modal.success({
+                            title: title,
+                            content: content
+                        });
+                        break;
+                    case 'warning':
+                        this.$Modal.warning({
+                            title: title,
+                            content: content
+                        });
+                        break;
+                    case 'error':
+                        this.$Modal.error({
+                            title: title,
+                            content: content
+                        });
+                        break;
+                }
+            }
+        }
+    }
+</script>
+
+```
+
+
+2. 对话框位置
+    - 距离顶部20px
+    - 垂直居中
+
+```
+<style lang="less">
+    .vertical-center-modal{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .ivu-modal{
+            top: 0;
+        }
+    }
+</style>
+<template>
+    <Button @click="modal9 = true">20px from the top</Button>
+    <Modal
+        title="Title"
+        v-model="modal9"
+        :styles="{top: '20px'}">
+        <p>Content of dialog</p>
+        <p>Content of dialog</p>
+        <p>Content of dialog</p>
+    </Modal>
+    <Button @click="modal10 = true">Vertical center</Button>
+    <Modal
+        title="Title"
+        v-model="modal10"
+        class-name="vertical-center-modal">
+        <p>Content of dialog</p>
+        <p>Content of dialog</p>
+        <p>Content of dialog</p>
+    </Modal>
+</template>
+<script>
+    export default {
+        data () {
+            return {
+                modal9: false,
+                modal10: false,
+            }
+        }
+    }
+</script>
+
+```
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="message">
+    <p>{{message}}</p>
+
+
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+
+    <!-- 多个复选框，绑定到同一个数组： -->
+    <div>
+      <input type="checkbox" id="jack" value="jack" v-model="checkArrs">
+      <label for="jack">jack</label>
+      <input type="checkbox" id="tom" value="tom" v-model="checkArrs">
+      <label for="tom">tom</label>
+      <input type="checkbox" id="lily" value="lily" v-model="checkArrs">
+      <label for="lily">lily</label>
+      <span>{{checkArrs}}</span>
+    </div>
+
+    <!-- 单选按钮 -->
+    <div>
+      <input type="radio" id="one" value="one" v-model="radioArrs">
+      <label for="one"></label>
+      <input type="radio" id="two" value="two" v-model="radioArrs">
+      <label for="two"></label>
+      <span>{{radioArrs}}</span>
+    </div>
+
+    <!-- 选择框 -->
+    <div>
+      <select v-model="selected">
+        <option disabled value="">请选择</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <p>Selected: {{selected}}</p>
+    </div>
+  </div>
+
+  <div>
+    <input type="radio" v-model="pick" v-bind:value="a">
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    let app = new Vue ({
+      el: "#app",
+      data: {
+        message: 'hello tian',
+        checked: false,
+        checkArrs: ['lily'],
+        radioArrs: 'one',
+        selected: "",
+        pick: "123"
+      }
+    })
+  
+  </script>
+</body>
+</html>
